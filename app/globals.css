@@ -65,22 +65,28 @@
   --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* === Animations === */
-  --animate-float: float 8s ease-in-out infinite;
-  --animate-orb: orb-drift 14s ease-in-out infinite;
-  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-shimmer: shimmer 6s linear infinite;
+  --animate-blob-spin: blobSpin 28s linear infinite;
+  --animate-blob-spin-reverse: blobSpinReverse 36s linear infinite;
+  --animate-scroll-hint: scrollHint 2s ease-in-out infinite;
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-24px) rotate(2deg); }
-  }
-  @keyframes orb-drift {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    33% { transform: translate3d(40px, -30px, 0) scale(1.08); }
-    66% { transform: translate3d(-30px, 20px, 0) scale(0.95); }
-  }
   @keyframes shimmer {
     0% { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
+  }
+  @keyframes blobSpin {
+    from { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.08); }
+    to { transform: rotate(360deg) scale(1); }
+  }
+  @keyframes blobSpinReverse {
+    from { transform: rotate(360deg) scale(1); }
+    50% { transform: rotate(180deg) scale(0.94); }
+    to { transform: rotate(0deg) scale(1); }
+  }
+  @keyframes scrollHint {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(8px); opacity: 0.5; }
   }
 }
 
