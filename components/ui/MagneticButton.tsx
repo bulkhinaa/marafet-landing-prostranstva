@@ -12,8 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<Variant, string> = {
-  primary:
-    "gradient-brand text-white shadow-[0_10px_30px_-12px_rgba(122,84,255,0.6)] hover:shadow-[0_18px_44px_-12px_rgba(122,84,255,0.7)]",
+  primary: "gradient-brand text-white hover:opacity-90",
   secondary: "bg-ink-100 text-white hover:bg-ink-90",
   ghost:
     "bg-accent-10 text-accent-100 ring-1 ring-inset ring-accent-30 hover:bg-accent-20",
@@ -35,8 +34,7 @@ export function MagneticButton({
       className={cn(
         "group relative inline-flex items-center justify-center gap-2.5",
         "h-14 rounded-full px-8 text-base font-semibold",
-        "transition-[transform,box-shadow] duration-300 ease-out",
-        "hover:scale-[1.03] active:scale-[0.97]",
+        "transition-colors duration-200 ease-out",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-60 focus-visible:ring-offset-2",
         "disabled:opacity-50 disabled:pointer-events-none",
         variantStyles[variant],
