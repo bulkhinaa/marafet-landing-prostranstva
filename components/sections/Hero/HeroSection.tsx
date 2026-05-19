@@ -9,13 +9,13 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-28 pb-24 md:pt-32 md:pb-32"
+      className="relative isolate overflow-hidden pt-28 pb-24 md:pt-32 md:pb-32"
     >
       <HeroBackground />
       <FloatingObjects />
 
       <Container size="xl" className="relative z-10">
-        <div className="flex flex-col gap-8 md:gap-10 animate-[heroIn_0.7s_cubic-bezier(0.16,1,0.3,1)_both]">
+        <div className="flex flex-col gap-8 md:gap-10 animate-[heroIn_0.45s_cubic-bezier(0.16,1,0.3,1)_both]">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-accent-10 px-4 py-2 text-sm font-medium text-accent-80 ring-1 ring-inset ring-accent-30">
               <Sparkles className="h-4 w-4 text-accent-60" />
@@ -38,9 +38,7 @@ export function HeroSection() {
           <div className="flex flex-wrap gap-4 pt-2">
             <MagneticButton
               variant="primary"
-              icon={
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              }
+              icon={<ArrowRight className="h-5 w-5" />}
             >
               У меня коворкинг
             </MagneticButton>
