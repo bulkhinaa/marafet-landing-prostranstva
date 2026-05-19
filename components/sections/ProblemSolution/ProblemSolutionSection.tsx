@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -61,6 +61,20 @@ const TABS: { id: Audience; label: string }[] = [
 export function ProblemSolutionSection() {
   const [active, setActive] = useState<Audience>("coworking");
   const items = DATA[active];
+
+  // Слушаем выбор аудитории из hero-кнопок
+  useEffect(() => {
+    const onPick = (e: Event) => {
+      const detail = (e as CustomEvent<Audience>).detail;
+      if (detail === "coworking" || detail === "salon") setActive(detail);
+    };
+    window.addEventListener("audience-select", onPick);
+    // На случай прямого захода по hash
+    const hash = window.location.hash;
+    if (hash.includes("salon")) setActive("salon");
+    else if (hash.includes("coworking")) setActive("coworking");
+    return () => window.removeEventListener("audience-select", onPick);
+  }, []);
 
   return (
     <Section anchor="problem-solution" tone="light">

@@ -1,9 +1,27 @@
+"use client";
+
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { HeroBackground } from "./HeroBackground";
 import { FloatingObjects } from "./FloatingObjects";
 import { HeroCounters } from "./HeroCounters";
+
+/**
+ * Прокрутка к секции "Боль/Решение" с предустановкой нужного таба.
+ * Таб коммуницируется через URL hash, секция читает window.location.hash.
+ */
+function scrollToProblem(audience: "coworking" | "salon") {
+  const target = document.getElementById("problem-solution");
+  if (!target) return;
+  // Сохраняем намерение в hash, чтобы ProblemSolutionSection прочитала его
+  history.replaceState(null, "", `#problem-solution-${audience}`);
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Триггерим custom event для секции
+  window.dispatchEvent(
+    new CustomEvent("audience-select", { detail: audience })
+  );
+}
 
 export function HeroSection() {
   return (
@@ -39,10 +57,16 @@ export function HeroSection() {
             <MagneticButton
               variant="primary"
               icon={<ArrowRight className="h-5 w-5" />}
+              onClick={() => scrollToProblem("coworking")}
             >
               У меня коворкинг
             </MagneticButton>
-            <MagneticButton variant="ghost">У меня салон</MagneticButton>
+            <MagneticButton
+              variant="ghost"
+              onClick={() => scrollToProblem("salon")}
+            >
+              У меня салон
+            </MagneticButton>
           </div>
 
           <div className="mt-10 border-t border-ink-20/60 pt-10 md:mt-16 md:pt-16">
