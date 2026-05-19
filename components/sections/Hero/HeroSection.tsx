@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -12,18 +9,13 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-dvh items-center overflow-hidden pt-28 pb-24 md:pt-32 md:pb-32"
+      className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-28 pb-24 md:pt-32 md:pb-32"
     >
       <HeroBackground />
       <FloatingObjects />
 
       <Container size="xl" className="relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col gap-8 md:gap-10"
-        >
+        <div className="flex flex-col gap-8 md:gap-10 animate-[heroIn_0.7s_cubic-bezier(0.16,1,0.3,1)_both]">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-accent-10 px-4 py-2 text-sm font-medium text-accent-80 ring-1 ring-inset ring-accent-30">
               <Sparkles className="h-4 w-4 text-accent-60" />
@@ -61,7 +53,7 @@ export function HeroSection() {
             </p>
             <HeroCounters />
           </div>
-        </motion.div>
+        </div>
       </Container>
 
       <div
