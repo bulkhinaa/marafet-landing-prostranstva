@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Check, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -108,35 +109,47 @@ export function ProblemSolutionSection() {
         </div>
 
         {/* Сетка пар */}
-        <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-x-12 md:gap-y-8">
-          {items.map((item, i) => (
-            <div
-              key={`${active}-${i}`}
-              className="grid grid-cols-1 gap-3 rounded-3xl bg-accent-10/60 p-6 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-6 md:bg-transparent md:p-0"
-            >
-              <div className="flex items-start gap-3 md:gap-4">
-                <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-error/15 text-error">
-                  <X className="h-4 w-4" strokeWidth={2.5} />
-                </span>
-                <p className="text-base text-ink-70 line-through decoration-error/40 decoration-2 md:text-lg">
-                  {item.pain}
-                </p>
-              </div>
-              <div
-                aria-hidden
-                className="hidden h-px w-12 bg-gradient-to-r from-error/30 to-success/30 md:block"
-              />
-              <div className="flex items-start gap-3 md:gap-4">
-                <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-success/15 text-success">
-                  <Check className="h-4 w-4" strokeWidth={2.5} />
-                </span>
-                <p className="text-base font-medium text-ink-100 md:text-lg">
-                  {item.solution}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-x-12 md:gap-y-8"
+          >
+            {items.map((item, i) => (
+              <motion.div
+                key={`${active}-${i}`}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.3 }}
+                className="grid grid-cols-1 gap-3 rounded-3xl bg-accent-10/60 p-6 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-6 md:bg-transparent md:p-0"
+              >
+                <div className="flex items-start gap-3 md:gap-4">
+                  <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-error/15 text-error">
+                    <X className="h-4 w-4" strokeWidth={2.5} />
+                  </span>
+                  <p className="text-base text-ink-70 line-through decoration-error/40 decoration-2 md:text-lg">
+                    {item.pain}
+                  </p>
+                </div>
+                <div
+                  aria-hidden
+                  className="hidden h-px w-12 bg-gradient-to-r from-error/30 to-success/30 md:block"
+                />
+                <div className="flex items-start gap-3 md:gap-4">
+                  <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-success/15 text-success">
+                    <Check className="h-4 w-4" strokeWidth={2.5} />
+                  </span>
+                  <p className="text-base font-medium text-ink-100 md:text-lg">
+                    {item.solution}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </Container>
     </Section>
   );

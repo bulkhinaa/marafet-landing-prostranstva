@@ -55,7 +55,8 @@
   /* === Fonts (linked to next/font CSS variables) === */
   --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-unbounded), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
   /* === Custom radius extension === */
   --radius-2xl: 24px;

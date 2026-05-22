@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Megaphone,
   MapPin,
@@ -15,6 +17,8 @@ import {
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { TiltCard } from "@/components/ui/TiltCard";
+import { FloatingElement } from "@/components/ui/FloatingElement";
 
 interface Benefit {
   icon: typeof Megaphone;
@@ -93,33 +97,36 @@ export function BenefitsSection() {
     <Section anchor="benefits" tone="light">
       <Container size="xl">
         <SectionHeading
-          eyebrow="12 пунктов пакета"
+          eyebrow="12 направлений поддержки"
           title="Что получает Марафет Пространство"
-          subtitle="Бесплатный коннект даёт первые 5 пунктов. Полный пакет — все 12 + персонализация под город и формат"
+          subtitle="Всё — бесплатно для подключённого партнёра. Платформа зарабатывает только на комиссии с записей мастеров через приложение"
           align="center"
         />
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {BENEFITS.map((benefit) => {
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 [transform-style:preserve-3d]">
+          {BENEFITS.map((benefit, i) => {
             const Icon = benefit.icon;
             return (
-              <div
+              <TiltCard
                 key={benefit.title}
-                className={`group relative flex flex-col gap-3 rounded-3xl p-6 transition-colors duration-200 ${
+                maxTilt={6}
+                className={`group flex flex-col gap-3 rounded-3xl p-6 ${
                   benefit.accent
                     ? "bg-accent-100 text-white ring-1 ring-inset ring-accent-80"
-                    : "bg-accent-10 hover:bg-accent-20"
+                    : "bg-accent-10 ring-1 ring-inset ring-accent-30/50"
                 }`}
               >
-                <span
-                  className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl ${
-                    benefit.accent
-                      ? "bg-white/10 text-accent-30"
-                      : "bg-surface text-accent-60"
-                  }`}
-                >
-                  <Icon className="h-5 w-5" strokeWidth={2} />
-                </span>
+                <FloatingElement amplitude={3} duration={4 + (i % 4) * 0.5} delay={(i % 4) * 0.15}>
+                  <span
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl transition-transform group-hover:scale-110 ${
+                      benefit.accent
+                        ? "bg-white/10 text-accent-30"
+                        : "bg-surface text-accent-60"
+                    }`}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={2} />
+                  </span>
+                </FloatingElement>
                 <h3
                   className={`font-display text-xl font-bold tracking-tight ${
                     benefit.accent ? "text-white" : "text-ink-100"
@@ -134,14 +141,13 @@ export function BenefitsSection() {
                 >
                   {benefit.description}
                 </p>
-              </div>
+              </TiltCard>
             );
           })}
         </div>
 
-        {/* Подсказка */}
         <p className="mt-10 text-center text-sm text-ink-60">
-          Полный список и условия пакета — на следующем созвоне
+          Детали и условия комиссии — на 30-минутном созвоне с аккаунт-менеджером
         </p>
       </Container>
     </Section>
