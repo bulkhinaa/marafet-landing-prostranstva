@@ -6,7 +6,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { BorderBeamButton } from "@/components/ui/BorderBeamButton";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { SpotlightCursor } from "@/components/ui/SpotlightCursor";
-import { IridescentOrb } from "@/components/ui/IridescentOrb";
+import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { Parallax } from "@/components/ui/Parallax";
 import { SparklesOverlay } from "@/components/ui/Sparkles";
@@ -112,49 +112,10 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* RIGHT — Иридесцентный диск + малые орбы с параллаксом */}
+          {/* RIGHT — Анимированный логотип Марафет */}
           <div className="relative hidden lg:flex items-center justify-center opacity-0 animate-[wordIn_1s_cubic-bezier(0.16,1,0.3,1)_0.4s_both]">
-            {/* Главный диск — лёгкий параллакс наружу */}
             <Parallax speed={0.12} className="relative">
-              <IridescentOrb size={440} className="relative" />
-            </Parallax>
-
-            {/* Малый орб слева-снизу — двигается с другой скоростью */}
-            <Parallax
-              speed={-0.18}
-              driftX={0.05}
-              className="absolute -bottom-6 -left-6"
-            >
-              <FloatingElement amplitude={12} duration={5} delay={0.5}>
-                <div
-                  aria-hidden
-                  className="h-24 w-24 rounded-full"
-                  style={{
-                    background:
-                      "conic-gradient(from 90deg, #FFD1FF, #B6A1FF, #AB5CE9, #FFD1FF)",
-                    boxShadow: "0 10px 40px -10px rgba(171,92,233,0.6)",
-                  }}
-                />
-              </FloatingElement>
-            </Parallax>
-
-            {/* Малый орб справа-сверху — третья скорость, другая ось */}
-            <Parallax
-              speed={0.22}
-              driftX={-0.04}
-              className="absolute -top-4 right-0"
-            >
-              <FloatingElement amplitude={8} duration={6} direction="both">
-                <div
-                  aria-hidden
-                  className="h-16 w-16 rounded-full"
-                  style={{
-                    background:
-                      "conic-gradient(from 0deg, #7A54FF, #CABBFF, #FFFFFF, #7A54FF)",
-                    boxShadow: "0 8px 30px -8px rgba(122,84,255,0.5)",
-                  }}
-                />
-              </FloatingElement>
+              <AnimatedLogo size={420} />
             </Parallax>
           </div>
         </div>

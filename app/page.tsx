@@ -12,24 +12,82 @@ import { TermsSection } from "@/components/sections/Terms/TermsSection";
 import { FAQSection } from "@/components/sections/FAQ/FAQSection";
 import { FinalCTASection } from "@/components/sections/FinalCTA/FinalCTASection";
 import { FooterSection } from "@/components/sections/Footer/FooterSection";
+import { SectionTransition, SectionDivider } from "@/components/ui/SectionTransition";
 
 export default function HomePage() {
   return (
     <>
       <StickyNav />
-      <main className="relative">
+      <main className="relative overflow-x-hidden">
+        {/* Hero - no transition, it's the first thing visible */}
         <HeroSection />
-        <ProblemSolutionSection />
-        <HowItWorksSection />
-        <BenefitsSection />
-        <ScenariosSection />
-        <FinancialSection />
+
+        {/* Problem/Solution with slide-up effect */}
+        <SectionTransition variant="slide" depth={-0.05}>
+          <ProblemSolutionSection />
+        </SectionTransition>
+
+        <SectionDivider variant="gradient" />
+
+        {/* How It Works with zoom parallax */}
+        <SectionTransition variant="zoom" depth={0.03}>
+          <HowItWorksSection />
+        </SectionTransition>
+
+        <SectionDivider variant="dots" />
+
+        {/* Benefits floating up */}
+        <SectionTransition variant="slide" depth={-0.02}>
+          <BenefitsSection />
+        </SectionTransition>
+
+        <SectionDivider variant="line" />
+
+        {/* Scenarios with subtle zoom */}
+        <SectionTransition variant="zoom" depth={0.02}>
+          <ScenariosSection />
+        </SectionTransition>
+
+        <SectionDivider variant="gradient" />
+
+        {/* Financial section with wave effect */}
+        <SectionTransition variant="wave">
+          <FinancialSection />
+        </SectionTransition>
+
+        {/* Cases - immersive section, no wrapper needed */}
         <CasesSection />
-        <CommunitySection />
-        <TechSection />
-        <TermsSection />
-        <FAQSection />
-        <FinalCTASection />
+
+        {/* Community with slide */}
+        <SectionTransition variant="slide" depth={-0.03}>
+          <CommunitySection />
+        </SectionTransition>
+
+        <SectionDivider variant="wave" />
+
+        {/* Tech section with zoom */}
+        <SectionTransition variant="zoom" depth={0.04}>
+          <TechSection />
+        </SectionTransition>
+
+        <SectionDivider variant="dots" />
+
+        {/* Terms with fade */}
+        <SectionTransition variant="fade" depth={-0.02}>
+          <TermsSection />
+        </SectionTransition>
+
+        <SectionDivider variant="line" />
+
+        {/* FAQ with slide */}
+        <SectionTransition variant="slide">
+          <FAQSection />
+        </SectionTransition>
+
+        {/* Final CTA - reveal effect */}
+        <SectionTransition variant="reveal">
+          <FinalCTASection />
+        </SectionTransition>
       </main>
       <FooterSection />
     </>
