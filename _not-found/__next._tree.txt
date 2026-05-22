@@ -1,2 +1,2 @@
-:HL["/marafet-landing-prostranstva/_next/static/chunks/0svw.1c_qj8zk.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Wx5xTrVLqKhyzUVaGWAUf"}
+:HL["/marafet-landing-prostranstva/_next/static/chunks/000e6010yzjwz.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"jXEO0xOlyOkypA1PBpiFP"}
