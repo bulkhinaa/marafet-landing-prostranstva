@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Unbounded } from "next/font/google";
+import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -9,10 +9,10 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin", "cyrillic"],
-  weight: ["700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
@@ -48,6 +48,14 @@ export const metadata: Metadata = {
     title: "Марафет Пространства",
     description: "Экосистема для бьюти-коворкингов и салонов России",
   },
+  icons: {
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   robots: {
     index: true,
     follow: true,
@@ -72,7 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`${manrope.variable} ${unbounded.variable}`}
+      className={`${manrope.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-surface text-ink-100 antialiased">
